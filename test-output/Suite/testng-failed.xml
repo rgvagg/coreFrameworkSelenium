@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="quickStart.selenium.coreFramework.utilities.listeners.TestListener"/>
+  </listeners>
+  <test name="Test(failed)">
+    <classes>
+      <class name="quickStart.selenium.FacebookAutomation.tests.CheckFbLoginPage">
+        <methods>
+          <include name="checkWithInvalidCredentials"/>
+          <include name="setup"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- quickStart.selenium.FacebookAutomation.tests.CheckFbLoginPage -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

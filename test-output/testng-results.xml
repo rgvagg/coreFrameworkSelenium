@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2019-01-21T06:11:09Z" name="Suite" finished-at="2019-01-21T06:11:16Z" duration-ms="7531">
+    <groups>
+    </groups>
+    <test started-at="2019-01-21T06:11:09Z" name="Test" finished-at="2019-01-21T06:11:16Z" duration-ms="7531">
+      <class name="quickStart.selenium.FacebookAutomation.tests.CheckFbLoginPage">
+        <test-method is-config="true" signature="setup()[pri:0, instance:quickStart.selenium.FacebookAutomation.tests.CheckFbLoginPage@60cf80e7]" started-at="2019-01-21T11:41:09Z" name="setup" finished-at="2019-01-21T11:41:10Z" duration-ms="1195" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkWithInvalidCredentials()[pri:0, instance:quickStart.selenium.FacebookAutomation.tests.CheckFbLoginPage@60cf80e7]" started-at="2019-01-21T11:41:10Z" name="checkWithInvalidCredentials" finished-at="2019-01-21T11:41:16Z" duration-ms="6317" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkWithInvalidCredentials -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:quickStart.selenium.FacebookAutomation.tests.CheckFbLoginPage@60cf80e7]" started-at="2019-01-21T11:41:16Z" name="teardown" finished-at="2019-01-21T11:41:16Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- quickStart.selenium.FacebookAutomation.tests.CheckFbLoginPage -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
