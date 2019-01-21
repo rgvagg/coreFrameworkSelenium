@@ -1,0 +1,7 @@
+quickStart\selenium\coreFramework\utilities\extentReports\ExtentManager.class
+quickStart\selenium\coreFramework\utilities\main\BasePage.class
+quickStart\selenium\coreFramework\utilities\DateTime.class
+quickStart\selenium\coreFramework\utilities\extentReports\ExtentTestManager.class
+quickStart\selenium\coreFramework\utilities\listeners\TestListener.class
+quickStart\selenium\coreFramework\utilities\ReadProperty.class
+quickStart\selenium\coreFramework\utilities\DriverFactory.class
