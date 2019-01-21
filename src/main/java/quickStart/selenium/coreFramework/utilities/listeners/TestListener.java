@@ -51,7 +51,8 @@ public class TestListener extends BasePage implements ITestListener {
         //Start operation for extentreports.
         ExtentTestManager.startTest(iTestResult.getMethod().getMethodName(),"Start Test");
     }
- 
+  
+    
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         System.out.println("I am in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
