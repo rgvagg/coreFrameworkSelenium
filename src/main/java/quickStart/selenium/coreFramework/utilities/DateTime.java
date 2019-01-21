@@ -3,7 +3,7 @@ package quickStart.selenium.coreFramework.utilities;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class DateTime {
+public class DateTime { 
 
 	public static String uniqueStringStamp() {
 		
