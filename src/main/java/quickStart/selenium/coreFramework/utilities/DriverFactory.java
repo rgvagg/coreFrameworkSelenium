@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.relevantcodes.extentreports.LogStatus;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import quickStart.selenium.coreFramework.utilities.extentReports.ExtentTestManager;
 
 public class DriverFactory {
@@ -21,8 +22,9 @@ public class DriverFactory {
 
 	private static void newFirefoxDriver() {
 		if (driver == null) {
-			String workingDir = System.getProperty("user.dir");
-			System.setProperty("webdriver.gecko.driver", workingDir + "\\src\\main\\resources\\geckodriver.exe");
+//			String workingDir = System.getProperty("user.dir");
+//			System.setProperty("webdriver.gecko.driver", workingDir + "\\src\\main\\resources\\geckodriver.exe");
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "New Firefox Driver initialized");
 		}
@@ -31,8 +33,9 @@ public class DriverFactory {
 
 	private static void newChromeDriver() {
 		if (driver == null) {
-			String workingDir = System.getProperty("user.dir");
-			System.setProperty("webdriver.chrome.driver", workingDir + "\\src\\main\\resources\\chromedriver.exe");
+//			String workingDir = System.getProperty("user.dir");
+//			System.setProperty("webdriver.chrome.driver", workingDir + "\\src\\main\\resources\\chromedriver.exe");
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 //			ExtentTestManager.getTest().log(LogStatus.INFO, "New Chrome Driver initialized");
 
