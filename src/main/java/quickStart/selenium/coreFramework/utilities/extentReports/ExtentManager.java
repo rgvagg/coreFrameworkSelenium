@@ -10,11 +10,15 @@ public class ExtentManager {
  
     private static ExtentReports extent;
     public static String saveReportPath;
+    public static String dateFolderString;
+    
     public synchronized static ExtentReports getReporter(){
         if(extent == null){
             //Set HTML reporting file location
             String workingDir = System.getProperty("user.dir");
-            saveReportPath = workingDir+"\\ExtentReports\\"+DateTime.uniqueStringStamp()+"\\ExtentReportResults.html";
+            
+            dateFolderString = workingDir+"\\ExtentReports\\"+DateTime.uniqueStringStamp()+"\\";
+            saveReportPath = dateFolderString+"ExtentReportResults.html";
             extent = new ExtentReports(saveReportPath, true);
         }
         return extent;
