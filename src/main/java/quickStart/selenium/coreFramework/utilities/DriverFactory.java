@@ -5,14 +5,17 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.server.handler.WebElementHandler;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import quickStart.selenium.coreFramework.utilities.extentReports.ExtentTestManager;
+import quickStart.selenium.coreFramework.utilities.listeners.EventListenerClass;
 
 public class DriverFactory {
-	static WebDriver driver = null;
+	static private EventFiringWebDriver driver = null;
 	private static DriverFactory application;
 
 	private DriverFactory() {
@@ -25,7 +28,11 @@ public class DriverFactory {
 //			String workingDir = System.getProperty("user.dir");
 //			System.setProperty("webdriver.gecko.driver", workingDir + "\\src\\main\\resources\\geckodriver.exe");
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+			WebDriver driver1 = new FirefoxDriver();
+			driver = new EventFiringWebDriver(driver1); 
+			EventListenerClass eventListenerClass = new EventListenerClass();
+			driver.register(eventListenerClass);
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "New Firefox Driver initialized");
 		}
 
@@ -36,7 +43,17 @@ public class DriverFactory {
 //			String workingDir = System.getProperty("user.dir");
 //			System.setProperty("webdriver.chrome.driver", workingDir + "\\src\\main\\resources\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+
+			WebDriver driver1 = new ChromeDriver();
+			driver = new EventFiringWebDriver(driver1); 
+			
+//			WebElementHandler elementHandler = new WebElementHandler(driver1.);
+//			
+//			EventHandler handler = new EventHandler();
+
+			EventListenerClass eventListenerClass = new EventListenerClass();
+			driver.register(eventListenerClass);
+			
 //			ExtentTestManager.getTest().log(LogStatus.INFO, "New Chrome Driver initialized");
 
 			System.out.println("New Chrome driver initialized");

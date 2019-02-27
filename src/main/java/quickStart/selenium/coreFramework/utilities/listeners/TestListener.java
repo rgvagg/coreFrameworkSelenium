@@ -1,8 +1,11 @@
 package quickStart.selenium.coreFramework.utilities.listeners;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -15,7 +18,7 @@ import quickStart.selenium.coreFramework.utilities.extentReports.ExtentTestManag
 import quickStart.selenium.coreFramework.utilities.main.BasePage;
  
  
-public class TestListener extends BasePage implements ITestListener {
+public class TestListener extends BasePage implements ITestListener{
  
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
@@ -52,7 +55,6 @@ public class TestListener extends BasePage implements ITestListener {
         ExtentTestManager.startTest(iTestResult.getMethod().getMethodName(),"Start Test");
     }
   
-    
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         System.out.println("I am in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
@@ -90,5 +92,5 @@ public class TestListener extends BasePage implements ITestListener {
         ExtentTestManager.getTest().log(LogStatus.FAIL, "Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
 
     }
- 
+
 }
