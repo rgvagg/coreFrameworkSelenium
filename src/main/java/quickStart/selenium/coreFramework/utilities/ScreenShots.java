@@ -2,6 +2,7 @@ package quickStart.selenium.coreFramework.utilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -15,7 +16,7 @@ import quickStart.selenium.coreFramework.utilities.extentReports.ExtentTestManag
 import quickStart.selenium.coreFramework.utilities.main.BasePage;
 
 public class ScreenShots extends BasePage {
-	public static void capture() {
+	public static void capture() throws MalformedURLException {
 		WebDriver webDriver = DriverFactory.getDriver();
 
 		String base64Screenshot = "data:image/png;base64,"

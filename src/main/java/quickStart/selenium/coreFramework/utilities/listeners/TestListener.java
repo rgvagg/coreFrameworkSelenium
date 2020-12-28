@@ -16,8 +16,10 @@ import quickStart.selenium.coreFramework.utilities.DriverFactory;
 import quickStart.selenium.coreFramework.utilities.extentReports.ExtentManager;
 import quickStart.selenium.coreFramework.utilities.extentReports.ExtentTestManager;
 import quickStart.selenium.coreFramework.utilities.main.BasePage;
- 
- 
+
+import java.net.MalformedURLException;
+
+
 public class TestListener extends BasePage implements ITestListener{
  
     private static String getTestMethodName(ITestResult iTestResult) {
@@ -43,8 +45,13 @@ public class TestListener extends BasePage implements ITestListener{
         ExtentTestManager.endTest();
         ExtentManager.getReporter().flush();
         System.out.println(ExtentManager.saveReportPath);
-        
-        DriverFactory.getDriver().get(ExtentManager.saveReportPath);
+        driver.quit();
+
+//        try {
+//            DriverFactory.getDriver().get("file://"+ExtentManager.saveReportPath);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
     }
  
     @Override
@@ -68,8 +75,13 @@ public class TestListener extends BasePage implements ITestListener{
  
         //Get driver from BaseTest and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();
-        WebDriver webDriver = DriverFactory.getDriver();
- 
+        WebDriver webDriver = null;
+        try {
+            webDriver = DriverFactory.getDriver();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
         //Take base64Screenshot screenshot.
         String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)webDriver).
                 getScreenshotAs(OutputType.BASE64);

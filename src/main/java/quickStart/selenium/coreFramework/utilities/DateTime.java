@@ -12,7 +12,7 @@ public class DateTime {
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy HH:mm:ss");
 	String formattedDate = dateTime.format(formatter);
 	 
-	uniqueDateTimeStamp = (formattedDate.replace(':', '_')).replace('/', '_');
+	uniqueDateTimeStamp = ((formattedDate.replace(':', '_')).replace('/', '_')).replace(" ","");
 	return uniqueDateTimeStamp;
 	
 	}
