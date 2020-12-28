@@ -9,6 +9,8 @@ import com.relevantcodes.extentreports.ExtentTest;
 import quickStart.selenium.coreFramework.utilities.DriverFactory;
 import quickStart.selenium.coreFramework.utilities.extentReports.ExtentTestManager;
 
+import java.net.MalformedURLException;
+
 public class BasePage {
 	public static WebDriver driver;
 	public static ExtentTest extentTest;
@@ -20,13 +22,19 @@ public class BasePage {
 	}
 	
 	@BeforeClass
-	public void setup() {
+	public void setup() throws MalformedURLException {
 		// Create a Chrome driver. All test classes use this.
 		driver = DriverFactory.getDriver();
 		extentTest = ExtentTestManager.getTest();
 		// Maximize Window
 		driver.manage().window().maximize();
 	}
+	@BeforeClass
+	public void setup12() {
+		// Create a Chrome driver. All test classes use this.
+	System.out.println("CheckBeforeClassC2");
+	}
+	
 
 	@AfterClass
 	public void teardown() {

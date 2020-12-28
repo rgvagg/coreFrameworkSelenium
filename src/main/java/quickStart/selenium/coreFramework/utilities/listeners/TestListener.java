@@ -1,8 +1,11 @@
 package quickStart.selenium.coreFramework.utilities.listeners;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -13,9 +16,11 @@ import quickStart.selenium.coreFramework.utilities.DriverFactory;
 import quickStart.selenium.coreFramework.utilities.extentReports.ExtentManager;
 import quickStart.selenium.coreFramework.utilities.extentReports.ExtentTestManager;
 import quickStart.selenium.coreFramework.utilities.main.BasePage;
- 
- 
-public class TestListener extends BasePage implements ITestListener {
+
+import java.net.MalformedURLException;
+
+
+public class TestListener extends BasePage implements ITestListener{
  
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
@@ -40,8 +45,13 @@ public class TestListener extends BasePage implements ITestListener {
         ExtentTestManager.endTest();
         ExtentManager.getReporter().flush();
         System.out.println(ExtentManager.saveReportPath);
-        
-        DriverFactory.getDriver().get(ExtentManager.saveReportPath);
+        driver.quit();
+
+//        try {
+//            DriverFactory.getDriver().get("file://"+ExtentManager.saveReportPath);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
     }
  
     @Override
@@ -52,7 +62,6 @@ public class TestListener extends BasePage implements ITestListener {
         ExtentTestManager.startTest(iTestResult.getMethod().getMethodName(),"Start Test");
     }
   
-    
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         System.out.println("I am in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
@@ -66,8 +75,13 @@ public class TestListener extends BasePage implements ITestListener {
  
         //Get driver from BaseTest and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();
-        WebDriver webDriver = DriverFactory.getDriver();
- 
+        WebDriver webDriver = null;
+        try {
+            webDriver = DriverFactory.getDriver();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
         //Take base64Screenshot screenshot.
         String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)webDriver).
                 getScreenshotAs(OutputType.BASE64);
@@ -90,5 +104,5 @@ public class TestListener extends BasePage implements ITestListener {
         ExtentTestManager.getTest().log(LogStatus.FAIL, "Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
 
     }
- 
+
 }

@@ -9,7 +9,7 @@ public class ReadProperty {
 
 	private static String valueOfKey;
 	private static String workingDir = System.getProperty("user.dir");
-	private static String configFilePathString = workingDir+"\\src\\test\\resources\\config.properties";
+	private static String configFilePathString = workingDir+"//src//test//resources//config.properties";
 
 	public static String readProperty(String key) throws IOException {
 		File filepathFile = new File(configFilePathString);
